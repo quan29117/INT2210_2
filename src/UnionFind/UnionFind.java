@@ -1,17 +1,17 @@
 package UnionFind;
 
 public class UnionFind {
-    private final int[] root;
+    private final int[] id;
     private final int num;
     private final int[] sz;
     private int connectedComponentNum;
 
     public UnionFind(int N) {
         num = N;
-        root = new int[N];
+        id = new int[N];
         sz = new int[N];
         for (int i = 0; i < N; ++i) {
-            root[i] = i;
+            id[i] = i;
             sz[i] = 1;
         }
 
@@ -24,16 +24,16 @@ public class UnionFind {
 
     //Quick Find - Too weak for big data
     public int findQuick(int i) {
-        return root[i];
+        return id[i];
     }
 
     public void union(int num1, int num2) {
-        int root1 = findQuick(num1);
-        int root2 = findQuick(num2);
+        int id1 = findQuick(num1);
+        int id2 = findQuick(num2);
 
-        if (root1 != root2) {
+        if (id1 != id2) {
             for (int i = 0; i < num; ++i)
-                if (root[i] == root1) root[i] = root2;
+                if (id[i] == id1) id[i] = id2;
             connectedComponentNum--;
         }
     }
@@ -42,27 +42,26 @@ public class UnionFind {
     //-> Update 1: Weight to add the smaller to the bigger node-num one
     //-> Update 2: Path compression
     public int findRootQuickUnion(int i) {
-        while (i != root[i]) {
-            root[i] = root[root[i]];
-            i = root[i];
+        while (i != id[i]) {
+            id[i] = id[id[i]];
+            i = id[i];
         }
 
         return i;
     }
 
     public void unionQuick(int num1, int num2) {
-        int root1 = findRootQuickUnion(num1);
-        int root2 = findRootQuickUnion(num2);
+        int id1 = findRootQuickUnion(num1);
+        int id2 = findRootQuickUnion(num2);
 
-        //Set root1 become child of root2
-
-        if (root1 == root2) return;
-        if (sz[root1] < sz[root2]) {
-            root[root1] = root2;
-            sz[root2] += sz[root1];
+        //Set id1 become child of id2
+        if (id1 == id2) return;
+        if (sz[id1] < sz[id2]) {
+            id[id1] = id2;
+            sz[id2] += sz[id1];
         } else {
-            root[root2] = root1;
-            sz[root1] += sz[root2];
+            id[id2] = id1;
+            sz[id1] += sz[id2];
         }
         connectedComponentNum--;
     }
