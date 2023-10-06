@@ -2,9 +2,7 @@ package Stack_Queue;
 
 import edu.princeton.cs.algs4.*;
 
-import java.util.Scanner;
-
-public class MyStack {
+public class BalancedBrackets {
     public static String isBalanced(String s) {
         // Write your code here
         if (s.length() % 2 != 0) return "NO";

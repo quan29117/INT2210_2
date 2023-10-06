@@ -1,0 +1,12 @@
+SelectionSort
+    - 1Kints: 3ms 2ms 2ms 2ms 3ms 2ms 2ms 3ms 2ms 2ms
+    - 2Kints: 6ms 4ms 4ms 5ms 7ms 6ms 5ms 5ms 5ms 5ms
+    - 4Kints: 12ms 15ms 14ms 8ms 13ms 15ms 14ms 13ms 12ms 13ms
+    - 8Kints: 24ms 25ms 32ms 32ms 25ms 25ms 30ms 26ms 31ms 27ms
+    - 16Kints: 86ms 78ms 80ms 76ms 95ms 80ms 75ms 80ms 76ms 80ms
+    - 32Kints: 298ms 329ms 322ms 323ms 316ms 304ms 301ms 300ms 302ms 316ms
+    - 1Mints: 5,2566 min (315397ms)
+
+InsertionSort
+    - nKints: 0ms
+    - 1Mints: 15ms 16ms 15ms 17ms 16ms 15ms 16ms 15ms 15ms 15ms
