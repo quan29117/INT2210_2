@@ -8,5 +8,5 @@ SelectionSort
     - 1Mints: 5,2566 min (315397ms)
 
 InsertionSort
-    - nKints: 0ms
-    - 1Mints: 15ms 16ms 15ms 17ms 16ms 15ms 16ms 15ms 15ms 15ms
+    - nKints: 13ms 15ms 16ms 15ms 17ms 16ms 15ms 16ms 15ms 15ms 15ms
+    - 1Mints:

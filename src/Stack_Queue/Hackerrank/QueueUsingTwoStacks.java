@@ -1,34 +1,25 @@
-package Stack_Queue;
+package Stack_Queue.Hackerrank;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.io.*;
+import java.util.*;
 
 /**
  * This Structure use two stacks to contain elements with FIFO
  */
-public class QueueTwoStacks {
+public class QueueUsingTwoStacks {
+public class Solution {
     private Stack<Integer> newestElement;
     private Stack<Integer> oldestElement;
 
-    public QueueTwoStacks() {
+    public Solution() {
         newestElement = new Stack<Integer>();
         oldestElement = new Stack<Integer>();
     }
 
-    /**
-     * Push new element to "queue"
-     *
-     * @param n the new element pushed
-     */
     public void enqueue(int n) {
         newestElement.push(n);
     }
 
-    /**
-     * Remove the oldest element
-     *
-     * @return value of the oldest element that is removed
-     */
     public int dequeue() {
         if (!oldestElement.isEmpty()) return oldestElement.pop();
         oldestElement.empty();
@@ -37,11 +28,6 @@ public class QueueTwoStacks {
         return oldestElement.pop();
     }
 
-    /**
-     * Get the value of the oldest element
-     *
-     * @return value of the oldest element
-     */
     public int peek() {
         if (!oldestElement.isEmpty()) return oldestElement.peek();
         oldestElement.empty();
@@ -55,8 +41,9 @@ public class QueueTwoStacks {
     }
 
     public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner scanner = new Scanner(System.in);
-        QueueTwoStacks queue = new QueueTwoStacks();
+        Solution queue = new Solution();
 
         int queries = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
@@ -73,8 +60,7 @@ public class QueueTwoStacks {
                 }
 
                 case 2 -> {
-                    if (queue.isEmpty())
-                        queue.dequeue();
+                    queue.dequeue();
                 }
 
                 case 3 -> {
@@ -83,4 +69,6 @@ public class QueueTwoStacks {
             }
         }
     }
+}
+
 }
