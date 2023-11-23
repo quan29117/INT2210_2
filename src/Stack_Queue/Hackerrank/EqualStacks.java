@@ -68,10 +68,8 @@ class Result {
                 stack3.pop();
             }
         }
-
         return 0;
     }
-
 }
 
 public class Solution {

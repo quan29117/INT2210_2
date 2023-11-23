@@ -43,18 +43,17 @@ public class InsertionSort1 {
             arr[i+1] = sortElement;
             print(n, arr);
         }
-
     }
 
     public class Solution {
         public static void main(String[] args) throws IOException {
-            Scanner in = new Scanner(System.in);
-            int s = in.nextInt();
-            int[] ar = new int[s];
+            Scanner sc = new Scanner(System.in);
+            int s = sc.nextInt();
+            int[] arr = new int[s];
             for(int i = 0; i < s; i++) {
-                ar[i] = in.nextInt();
+                arr[i] = sc.nextInt();
             }
-            Result.insertionSort1(s, ar);
+            Result.insertionSort1(s, arr);
         }
     }
 }

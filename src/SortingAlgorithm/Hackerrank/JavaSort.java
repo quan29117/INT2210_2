@@ -30,7 +30,6 @@ static class Student {
 static class StudentComparator implements Comparator<Student> {
     @Override
     public int compare(Student a, Student b) {
-        //Complete your code
         if (a.getCgpa() < b.getCgpa()) return 1;
         if (a.getCgpa() > b.getCgpa()) return -1;
         if (!a.getFname().equals(b.getFname())) {
@@ -48,19 +47,14 @@ public class Solution {
         int testCases = Integer.parseInt(sc.nextLine());
 
         List<Student> studentList = new ArrayList<Student>();
-        while (testCases > 0) {
+        while (testCases-- > 0) {
             int id = sc.nextInt();
             String fname = sc.next();
             double cgpa = sc.nextDouble();
-
             Student st = new Student(id, fname, cgpa);
             studentList.add(st);
-
-            testCases--;
         }
-
         Collections.sort(studentList, new StudentComparator());
-
         for (Student st : studentList) {
             System.out.println(st.getFname());
         }

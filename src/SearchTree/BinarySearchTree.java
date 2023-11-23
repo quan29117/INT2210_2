@@ -5,6 +5,28 @@ import edu.princeton.cs.algs4.Queue;
 public class BinarySearchTree<Key extends Comparable, Value> {
     Node root;
 
+    public int sizeTree() {
+        return size(root);
+    }
+
+    private int size(Node x) {
+        if (x == null) return 0;
+        return x.count;
+    }
+
+    public int rank(Key key) {
+        return rank(key, root);
+    }
+
+    private int rank(Key key, Node x) {
+        if (x == null) return 0;
+        int cmp = key.compareTo(x.key);
+
+        if      (cmp < 0) return rank(key, x.left);
+        else if (cmp > 0) return 1 + size(x.left) + rank(key, x.right);
+        else              return size(x.left);
+    }
+
     public void put(Key key, Value val) {
         root = put(key, val, root);
     }
@@ -12,9 +34,12 @@ public class BinarySearchTree<Key extends Comparable, Value> {
     private Node put(Key key, Value val, Node x) {
         if (x == null) return new Node(key, val);
         int cmp = key.compareTo(x.key);
-        if (cmp < 0) x.left = put(key, val, x.left);
-        else if (cmp > 0) x.right = put(key, val, x.right);
-        else x.val = val;
+
+        if      (cmp > 0) x.right = put(key, val, x.right);
+        else if (cmp < 0) x.left = put(key, val, x.left);
+        else              x.val = val;
+
+        x.count = 1 + size(x.left) + size(x.right);
         return x;
     }
 
@@ -100,9 +125,24 @@ public class BinarySearchTree<Key extends Comparable, Value> {
         if (x == null) return null;
         int cmp = key.compareTo(x.key);
 
-        if (cmp == 0) return key;
+        if (cmp == 0 ) return key;
         if (cmp < 0) return floor(key, x.left);
         Key result = floor(key, x.right);
+        if (result != null) return result;
+        return x.key;
+    }
+
+    public Key ceil(Key key) {
+        return ceil(key, root);
+    }
+
+    private Key ceil(Key key, Node x) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+
+        if (cmp == 0) return key;
+        if (cmp > 0) return floor(key, x.right);
+        Key result = floor(key, x.left);
         if (result != null) return result;
         return x.key;
     }
@@ -115,6 +155,7 @@ public class BinarySearchTree<Key extends Comparable, Value> {
         if (x == null) return null;
         if (x.left == null) return x.right;
         x.left = deleteMin(x.left);
+        x.count = 1 + size(x.left) + size(x.right);
         return x;
     }
 
@@ -133,7 +174,6 @@ public class BinarySearchTree<Key extends Comparable, Value> {
             if (x.left == null) return x.right;
             if (x.right == null) return x.left;
 
-            //Improve in slide
             Key minRightKey = min(x.right);
             Value minRightVal = get(minRightKey);
             deleteMin(x.right);
@@ -148,6 +188,7 @@ public class BinarySearchTree<Key extends Comparable, Value> {
         Value val;
         Node left;
         Node right;
+        int count;
 
         public Node(Key key, Value val) {
             this.key = key;

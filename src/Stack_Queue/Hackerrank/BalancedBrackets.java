@@ -30,22 +30,22 @@ class Result {
         if (s.charAt(0) == ')' || s.charAt(0) == ']' || s.charAt(0) == '}')
             return "NO";
 
-        Stack<Character> charVAR = new Stack<Character>();
+        Stack<Character> check = new Stack<Character>();
         for (int i = 0; i < s.length(); ++i) {
             if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
-                charVAR.push(s.charAt(i));
+                check.push(s.charAt(i));
                 continue;
-            } else if (charVAR.isEmpty()) return "NO";
+            } else if (check.isEmpty()) return "NO";
 
-            if (s.charAt(i) == ')' && charVAR.peek() != '(')
+            if (s.charAt(i) == ')' && check.peek() != '(')
                 return "NO";
-            if (s.charAt(i) == ']' && charVAR.peek() != '[')
+            if (s.charAt(i) == ']' && check.peek() != '[')
                 return "NO";
-            if (s.charAt(i) == '}' && charVAR.peek() != '{')
+            if (s.charAt(i) == '}' && check.peek() != '{')
                 return "NO";
-            charVAR.pop();
+            check.pop();
         }
-        return charVAR.size() == 0 ? "YES" : "NO";
+        return check.size() == 0 ? "YES" : "NO";
     }
 
 }

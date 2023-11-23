@@ -45,16 +45,15 @@ public class InsertionSort2 {
                 print(n, arr);
             }
         }
-
     }
 
     public class Solution {
         public static void main(String[] args) throws IOException {
-            Scanner in = new Scanner(System.in);
-            int s = in.nextInt();
+            Scanner sc = new Scanner(System.in);
+            int s = sc.nextInt();
             int[] ar = new int[s];
             for(int i = 0; i < s; i++) {
-                ar[i] = in.nextInt();
+                ar[i] = sc.nextInt();
             }
             Result.insertionSort2(s, ar);
         }

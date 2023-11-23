@@ -16,7 +16,9 @@ public class StartUp {
     public static class CompanyComparator implements Comparator<Company> {
         @Override
         public int compare(Company o1, Company o2) {
-            return o1.profit.compareTo(o2.profit);
+            if (o1.profit.compareTo(o2.profit) != 0)
+                return o1.profit.compareTo(o2.profit);
+            else return o1.index.compareTo(o2.index);
         }
     }
 
@@ -28,7 +30,7 @@ public class StartUp {
         long totalProfit = 0;
 
         PriorityQueue<Company> companies = new PriorityQueue<>(comp);
-        Set<Integer> indexArr = new HashSet<>();
+        SortedSet<Integer> indexArr = new TreeSet<>();
 
         for (int i = 1; i < queries; i++) {
             int k = sc.nextInt();

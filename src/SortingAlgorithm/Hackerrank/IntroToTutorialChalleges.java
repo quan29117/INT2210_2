@@ -24,14 +24,14 @@ public class IntroToTutorialChalleges {
          *  2. INTEGER_ARRAY arr
          */
 
-        private static int binarySearch(List<Integer> arr, int V, int lo, int hi) {
-            int mid = lo + (hi - lo) / 2;
+        private static int binarySearch(List<Integer> arr, int V, int left, int right) {
+            int mid = left + (right - left) / 2;
 
-            if (lo <= hi) {
+            if (left <= right) {
                 if (arr.get(mid).intValue() < V) {
-                    return binarySearch(arr, V, mid + 1, hi);
+                    return binarySearch(arr, V, mid + 1, right);
                 } else if (arr.get(mid).intValue() > V) {
-                    return binarySearch(arr, V, lo, mid - 1);
+                    return binarySearch(arr, V, left, mid - 1);
                 } else
                     return mid;
             }

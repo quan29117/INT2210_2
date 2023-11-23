@@ -27,14 +27,13 @@ public class CountingSort1 {
             int[] ans = new int[100];
             List<Integer> ans1 = new ArrayList<Integer>(100);
             for (Integer element : arr) {
-                ans[element] += 1;
+                ans[element]++;
             }
             for (int i = 0; i < 100; i++) {
                 ans1.add(ans[i]);
             }
             return ans1;
         }
-
     }
 
     public class Solution {
